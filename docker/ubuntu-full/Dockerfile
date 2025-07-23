@@ -414,13 +414,13 @@ RUN --mount=type=cache,id=ubuntu-full-proj,target=$HOME/.cache \
      && rm -rf /build_tmp_proj
 
 # Build PROJ
-# ARG PROJ_VERSION=master
+ARG PROJ_VERSION=master
 RUN --mount=type=cache,id=ubuntu-full-proj,target=$HOME/.cache \
     . /buildscripts/bh-set-envvars.sh \
     && /buildscripts/bh-proj.sh
 
 # Build GDAL
-# ARG GDAL_VERSION=master
+ARG GDAL_VERSION=master
 ARG GDAL_RELEASE_DATE
 ARG GDAL_BUILD_IS_RELEASE
 ARG GDAL_REPOSITORY=OSGeo/gdal
