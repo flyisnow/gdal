@@ -57,7 +57,7 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
             patchelf \
             rsync
 
-ARG JAVA_VERSION=17
+ARG JAVA_VERSION=8
 # Setup build env for GDAL
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
@@ -414,13 +414,13 @@ RUN --mount=type=cache,id=ubuntu-full-proj,target=$HOME/.cache \
      && rm -rf /build_tmp_proj
 
 # Build PROJ
-ARG PROJ_VERSION=master
+# ARG PROJ_VERSION=master
 RUN --mount=type=cache,id=ubuntu-full-proj,target=$HOME/.cache \
     . /buildscripts/bh-set-envvars.sh \
     && /buildscripts/bh-proj.sh
 
 # Build GDAL
-ARG GDAL_VERSION=master
+# ARG GDAL_VERSION=master
 ARG GDAL_RELEASE_DATE
 ARG GDAL_BUILD_IS_RELEASE
 ARG GDAL_REPOSITORY=OSGeo/gdal
@@ -435,7 +435,7 @@ FROM $TARGET_BASE_IMAGE AS runner
 
 USER root
 RUN date
-ARG JAVA_VERSION=17
+ARG JAVA_VERSION=8
 ARG ARROW_SOVERSION=1600
 
 ARG TARGET_ARCH=
