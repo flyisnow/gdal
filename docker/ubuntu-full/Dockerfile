@@ -57,7 +57,7 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
             patchelf \
             rsync
 
-ARG JAVA_VERSION=17
+ARG JAVA_VERSION=8
 # Setup build env for GDAL
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
@@ -516,7 +516,7 @@ FROM $TARGET_BASE_IMAGE AS runner
 
 USER root
 RUN date
-ARG JAVA_VERSION=17
+ARG JAVA_VERSION=8
 ARG ARROW_SOVERSION=1600
 
 ARG TARGET_ARCH=
